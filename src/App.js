@@ -8,20 +8,17 @@ import './App.css';
 
 const App = () => {
     if(!localStorage.getItem('username')) return <LoginForm />
-    
+
    return (
-    <>
-    <div>
-        <h1>The Orient Chat App</h1> 
-    </div>
+
        <ChatEngine 
            height='100vh'
            projectID= {process.env.REACT_APP_PROJECTID}
-           userName="user1"
-           userSecret="123123"
+           userName={localStorage.getItem('username')}
+           userSecret={localStorage.getItem('password')}
            renderChatFeed={(chatAppProps) => <ChatFeed {...chatAppProps} />}
        />
-    </>
+
    );
 }
 
